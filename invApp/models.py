@@ -13,8 +13,8 @@ class Produk(models.Model):
 
     no_sku = models.CharField(max_length=10)
     nama_produk = models.CharField(max_length=100)
-    harga = models.IntegerField()
     kategori = models.CharField(max_length=100, choices=CATEGORY)
+    harga = models.IntegerField()
 
     def __str__(self):
         return self.no_sku + ' | ' + self.nama_produk + ' | ' + self.kategori
@@ -57,4 +57,11 @@ class AssemblyProduk(models.Model):
     pudding_milo_dino = models.IntegerField()
 
     def __str__(self):
-        return self.produk.nama_produk
+        return self.produk.no_sku + ' - ' + self.produk.nama_produk + ' - ' + self.produk.kategori
+
+class BahanBaku(models.Model):
+    no_sku = models.CharField(max_length=50)
+    nama_bahan = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.no_sku + ' - ' + self.nama_bahan
